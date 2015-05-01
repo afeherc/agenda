@@ -20,7 +20,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('/','AgendaController@index');
+Route::get('/','AgendaController.index');
 Route::resource('citas','CitasController');
 Route::resource('contactos','ContactosController');
 Route::bind('citas',function($value,$route){
