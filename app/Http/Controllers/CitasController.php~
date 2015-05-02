@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers;
 
-use App\Contacto;
+use App\Cita;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class ContactosController extends Controller {
+class CitasController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ContactosController extends Controller {
 	 */
 	public function index()
 	{
-		$contactos = Contacto::all();
-		return view('contactos.index', compact('contactos'));
+		$citas = Cita::all();
+		return view('citas.index', compact('citas'));
 	}
 
 	/**
@@ -24,9 +24,9 @@ class ContactosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(Contacto $contacto)
+	public function create(Cita $cita)
 	{
-		return view('contactos.create', compact('contacto'));
+		return view('citas.create', compact('cita'));
 	}
 
 	/**
@@ -45,9 +45,9 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Contacto $contacto)
+	public function show(Cita $cita)
 	{
-		return view('contactos.show', compact('contacto'));
+		return view('citas.show', compact('cita'));
 	}
 
 	/**
@@ -56,9 +56,9 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Contactos $contacto)
+	public function edit($id)
 	{
-		return view('contactos.edit', compact('contacto'));
+		return view('citas.edit', compact('cita'));
 	}
 
 	/**
@@ -78,11 +78,11 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Contacto $contacto)
+	public function destroy(Cita $cita)
 	{
 		$cita->delete();
  
-		return Redirect::route('contactos.index')->with('message', 'Contacto eliminado!');
+		return Redirect::route('citas.index')->with('message', 'Cita eliminada!');
 	}
 
 }

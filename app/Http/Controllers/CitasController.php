@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Cita;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class CitasController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$citas = Cita::all();
+		return view('citas.index', compact('citas'));
 	}
 
 	/**
@@ -22,9 +24,9 @@ class CitasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Cita $cita)
 	{
-		//
+		return view('citas.create', compact('cita'));
 	}
 
 	/**
@@ -43,9 +45,9 @@ class CitasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Cita $cita)
 	{
-		//
+		return view('citas.show', compact('cita'));
 	}
 
 	/**
@@ -54,9 +56,9 @@ class CitasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Cita $cita)
 	{
-		//
+		return view('citas.edit', compact('cita'));
 	}
 
 	/**
@@ -76,9 +78,11 @@ class CitasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Cita $cita)
 	{
-		//
+		$cita->delete();
+ 
+		return Redirect::route('citas.index')->with('message', 'Cita eliminada!');
 	}
 
 }

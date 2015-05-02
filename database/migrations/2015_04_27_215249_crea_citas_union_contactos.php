@@ -32,13 +32,12 @@ class CreaCitasUnionContactos extends Migration {
 			$table->timestamps();
 		});
 
-		Schema::create('unions', function(Blueprint $table)
+		Schema::create('cita_contacto', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('id_cita')->unsigned()->default(0);
-			$table->foreign('id_cita')->references('id')->on('citas')->onDelete('cascade');
-			$table->integer('id_contacto')->unsigned()->default(0);
-			$table->foreign('id_contacto')->references('id')->on('contactos')->onDelete('cascade');
+			$table->integer('cita_id')->unsigned()->index();
+			$table->foreign('cita_id')->references('id')->on('citas')->onDelete('cascade');
+			$table->integer('contacto_id')->unsigned()->index();
+			$table->foreign('contacto_id')->references('id')->on('contactos')->onDelete('cascade');
 			$table->timestamps();
 		});
 
@@ -52,9 +51,10 @@ class CreaCitasUnionContactos extends Migration {
 	 */
 	public function down()
 	{
+		Schema::drop('cita_contacto');
 		Schema::drop('contactos');
 		Schema::drop('citas');
-		Schema::drop('unions');
+		
 	}
 
 }

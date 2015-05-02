@@ -1,0 +1,17 @@
+<?php namespace App;
+
+use App\Cita;
+use App\Contacto;
+use Illuminate\Database\Eloquent\Model;
+
+class Union extends Model {
+
+	public function cita(){
+		return $this->belongsToMany('App\Cita');
+	}
+
+	public function contacto(){
+		return $this->belongsToMany('App\Contacto');
+	}
+
+}

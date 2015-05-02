@@ -20,9 +20,14 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::model('citas','Cita');
+Route::model('contactos','Contactos');
+
 Route::get('/','AgendaController@index');
+Route::resource('agenda','AgendaController');
 Route::resource('citas','CitasController');
 Route::resource('contactos','ContactosController');
+
 Route::bind('citas',function($value,$route){
 	return App\Cita::whereSlug($value)->first();
 });

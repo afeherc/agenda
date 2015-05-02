@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Contacto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +14,7 @@ class ContactosController extends Controller {
 	 */
 	public function index()
 	{
-		$contactos = Contacto::all();
-		return view('contactos.index', compact('contactos'));
+		//
 	}
 
 	/**
@@ -24,9 +22,9 @@ class ContactosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(Contacto $contacto)
+	public function create()
 	{
-		return view('contactos.create', compact('contacto'));
+		//
 	}
 
 	/**
@@ -45,9 +43,9 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Contacto $contacto)
+	public function show($id)
 	{
-		return view('contactos.show', compact('contacto'));
+		//
 	}
 
 	/**
@@ -56,9 +54,9 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Contactos $contacto)
+	public function edit($id)
 	{
-		return view('contactos.edit', compact('contacto'));
+		//
 	}
 
 	/**
@@ -78,11 +76,9 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Contacto $contacto)
+	public function destroy($id)
 	{
-		$cita->delete();
- 
-		return Redirect::route('contactos.index')->with('message', 'Contacto eliminado!');
+		//
 	}
 
 }
