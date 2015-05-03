@@ -2,6 +2,7 @@
 
 use Input;
 use Redirect;
+use App\Cita;
 use App\Contacto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -59,7 +60,8 @@ class ContactosController extends Controller {
 	 */
 	public function show(Contacto $contacto)
 	{
-		return view('contactos.show', compact('contacto'));
+		$citas = Cita::all();
+		return view('contactos.show', compact('contacto','citas'));
 	}
 
 	/**
@@ -92,7 +94,7 @@ class ContactosController extends Controller {
 	 */
 	public function destroy(Contacto $contacto)
 	{
-		$cita->delete();
+		$contacto->delete();
  
 		return Redirect::route('contactos.index')->with('message', 'Contacto eliminado!');
 	}

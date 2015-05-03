@@ -18,7 +18,20 @@
 			<li><a href="{{route('citas.show', $cita->slug) }}">{{ $cita->nom }}</a></li>
 		@endforeach
 		</dl>
+	
 	@endif
+	
+	<?php $data = array(); ?>
+        @foreach ($citas as $cita)
+            <?php 
+                array_push($data,$cita->id = $cita->nom);	
+            ?>
+        @endforeach
+        {!! Form::open() !!}
+        {!! Form::select('citas',$data) !!}
+        {!! Form::submit(Lang::get('messages.addMeeting'), array('class' => 'btn btn-info')) !!}
+        {!! Form::close() !!}
+
 	{!! link_to_route('contactos.edit',Lang::get('messages.editContact')) !!}<br/>
 	{!! link_to_route('contactos.index',Lang::get('messages.backToContacts')) !!}
 @endsection

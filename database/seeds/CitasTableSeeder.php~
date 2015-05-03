@@ -16,7 +16,7 @@ class CitasTableSeeder extends Seeder {
         );
  
         // Uncomment the below to run the seeder
-        DB::table('projects')->insert($projects);
+        DB::table('citas')->insert($citas);
     }
  
 }
