@@ -1,12 +1,11 @@
 <?php namespace App;
 
-use App\Union;
 use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model {
 
-	public function unions(){
-		return $this->hasMany('App\Union');
+	public function contactos(){
+		return $this->belongsToMany('App\Contacto');
 	}
 
 }

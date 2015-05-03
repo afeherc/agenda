@@ -1,9 +1,19 @@
 @extends('app')
  
 @section('content')
-    <h2>{{Lang::get('messages.create')}}</h2>
-  	
-    {!! Form::model(new App\Poblacion, ['route' => ['poblacions.store']]) !!}
-        @include('poblacions/parcials/_form', ['submit_text' => Lang::get('messages.create')])
+    <h2>Create cita</h2>
+    {!! Form::model(new App\Cita, ['route' => ['citas.store']]) !!}
+        @include('citas/parcials/_form', ['submit_text' => 'Crea'])
+    {!! Form::close() !!}
+
+    <?php $data = array(); ?>
+    @foreach ($contactos as $contacto)
+        <?php 
+		array_push($data,$contacto->id = $contacto->nom);	
+        ?>
+    @endforeach
+    {!! Form::open(array('action' => 'CitasController@addContacto')) !!}
+        {!! Form::select('contactos',$data) !!}
+        {!! Form::submit('Add contact.', array('class' => 'btn btn-info')) !!}
     {!! Form::close() !!}
 @endsection

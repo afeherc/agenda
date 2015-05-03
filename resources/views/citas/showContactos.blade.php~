@@ -1,0 +1,21 @@
+@extends('app')
+
+@section('content')
+	<h2>Contactes per afegir</h2>
+	
+	@if ( !$contactos->count())
+                No hi ha contactes
+        @else
+                <ul>
+                        @foreach( $contactes as $contacto )
+                                <li>
+					<a href="{{route('contactos.show', $contacto->slug) }}">{{ $contacto->nom }}</a>
+                
+				</li>
+                        @endforeach
+                </ul>
+        @endif
+	<p>
+		{!! link_to_route('citas.show','Citas.show') !!}
+	</p>
+@endsection

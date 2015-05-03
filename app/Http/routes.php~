@@ -23,7 +23,9 @@ Route::controllers([
 Route::model('citas','Cita');
 Route::model('contactos','Contactos');
 
-Route::resource('/','AgendaController@index');
+Route::get('/','AgendaController@index');
+Route::resource('agenda','AgendaController');
+//Route::get('addCont','CitasController@addCont')
 Route::resource('citas','CitasController');
 Route::resource('contactos','ContactosController');
 

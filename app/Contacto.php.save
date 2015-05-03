@@ -1,12 +1,10 @@
 <?php namespace App;
 
+use App\Union;
 use Illuminate\Database\Eloquent\Model;
 
 class Contacto extends Model {
 
-	public function citas(){
-                return $this->belongsToMany('App\Cita');
-        }
-
+	<tr><td>Data de la cita</td><td>{{ $cita->fecha }}</td></tr>
 
 }

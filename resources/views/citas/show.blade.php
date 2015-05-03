@@ -5,12 +5,32 @@
 		{{ $cita->nom }}
 	</h2>
 	<table class="table">
-		<tr><td>Nom:</td><td>{{ $cita->nom }}</td></tr>
-		<tr><td>Data de la cita</td><td>{{ $cita->fecha }}</td></tr>
-		<tr><td>Lloc de la cita</td><td>{{ $cita->lloc }}</td></tr>
-		<tr><td>Data de creació:</td><td>{{ $cita->created_at }}</td></tr>
+		<tr><td>{{Lang::get('messages.name')}}</td><td>{{ $cita->nom }}</td></tr>
+		<tr><td>{{Lang::get('messages.date')}}</td><td>{{ $cita->fecha }}</td></tr>
+		<tr><td>{{Lang::get('messages.place')}}</td><td>{{ $cita->lloc }}</td></tr>
+		<tr><td>{{Lang::get('messages.createdAt')}}</td><td>{{ $cita->created_at }}</td></tr>
 	</table>
-	@foreach ($cita->contactos as $contacto)
-		{{$contacto->nom}}
-	@endforeach
+	@if ( !$cita->contactos->count())
+		{{Lang::get('messages.noContacts')}}<br/>
+	@else
+		<dl>
+		@foreach ($cita->contactos as $contacto)
+			<li><a href="{{route('contactos.show', $contacto->slug) }}">{{ $contacto->nom }}</a></li>
+		@endforeach
+		</dl>
+	@endif
+	
+    <?php $data = array(); ?>
+    @foreach ($contactos as $contacto)
+        <?php 
+		array_push($data,$contacto->id = $contacto->nom);	
+        ?>
+    @endforeach
+    {!! Form::open(array('action' => 'CitasController@edit')) !!}
+        {!! Form::select('contactos',$data) !!}
+        {!! Form::submit(Lang::get('messages.addContact'), array('class' => 'btn btn-info')) !!}
+    {!! Form::close() !!}
+
+	{!! link_to_route('citas.edit',Lang::get('messages.editMeeting'), array($cita->slug)) !!}<br/>
+        {!! link_to_route('citas.index', Lang::get('messages.backToMeetings')) !!}
 @endsection

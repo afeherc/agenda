@@ -1,28 +1,28 @@
 @extends('app')
 
 @section('content')
-	<h2>Contactos@{{ Lang::get('messages.title') }}</h2>
+	<h2>{{ Lang::get('messages.titleContacts') }}</h2>
 	
 	@if ( !$contactos->count())
-                No hay Contactos@{{ Lang::get('messages.noPoblations') }}
+                {{ Lang::get('messages.noContacts') }}
         @else
-                <ul>
+                <dl>
                         @foreach( $contactos as $contacto )
                                 <li>
 					{!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('contactos.destroy', $contacto->slug))) !!}
 					<a href="{{route('contactos.show', $contacto->slug) }}">{{ $contacto->nom }}</a>
 					(
-                            		{!! link_to_route('contactos.edit', 'Edit', array($contacto->slug), array('class' => 'btn btn-info')) !!},
-                            		{!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+                            		{!! link_to_route('contactos.edit', Lang::get('messages.edit'), array($contacto->slug), array('class' => 'btn btn-info')) !!},
+                            		{!! Form::submit(Lang::get('messages.delete'), array('class' => 'btn btn-danger')) !!}
                         		)
                     			{!! Form::close() !!}
                 
 				</li>
                         @endforeach
-                </ul>
+                </dl>
         @endif
 	<p>
-		{!! link_to_route('agenda.index', 'Back to menu') !!}<br/><br/>
-		{!! link_to_route('contactos.create', 'Create') !!}
+		{!! link_to_route('contactos.create', Lang::get('messages.create')) !!}<br/><br/>
+		{!! link_to_route('agenda.index', Lang::get('messages.backToMenu')) !!}
 	</p>
 @endsection

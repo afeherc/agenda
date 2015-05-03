@@ -1,13 +1,22 @@
 <?php namespace App\Http\Controllers;
 
+use Input;
+use Redirect;
 use App\Cita;
+use App\Contacto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 class CitasController extends Controller {
-
+	
+	protected $rules = [
+		'nom' => ['required', 'min:1'],
+		'slug' => ['required','min:1'],
+		'lloc' => ['required'],
+		'fecha' => ['required']
+	];
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -24,9 +33,10 @@ class CitasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(Cita $cita)
+	public function create()
 	{
-		return view('citas.create', compact('cita'));
+		$contactos = Contacto::all();
+		return view('citas.create', compact('contactos'));
 	}
 
 	/**
@@ -34,9 +44,14 @@ class CitasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$this->validate($request, $this->rules);
+		$input = Input::all();
+		Cita::create( $input );
+ 
+		return Redirect::route('citas.index')->with('message', 'Cita creada!');
+
 	}
 
 	/**
@@ -47,7 +62,8 @@ class CitasController extends Controller {
 	 */
 	public function show(Cita $cita)
 	{
-		return view('citas.show', compact('cita'));
+		$contactos = Contacto::all();
+		return view('citas.show', compact('cita','contactos'));
 	}
 
 	/**
@@ -67,9 +83,10 @@ class CitasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$contactos = Contacto::all();
+		return view('citas.showContactos', compact('contactos'));
 	}
 
 	/**
@@ -84,5 +101,5 @@ class CitasController extends Controller {
  
 		return Redirect::route('citas.index')->with('message', 'Cita eliminada!');
 	}
-
+	
 }

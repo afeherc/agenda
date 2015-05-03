@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Input;
+use Redirect;
 use App\Contacto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -8,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ContactosController extends Controller {
 
+	protected $rules = [
+		'nom' => ['required', 'min:1'],
+		'slug' => ['required','min:1'],
+		'mail' => ['required'],
+	];
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -34,9 +41,14 @@ class ContactosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$this->validate($request, $this->rules);
+		$input = Input::all();
+		Contacto::create( $input );
+ 
+		return Redirect::route('contactos.index')->with('message', 'Contacto creada!');
+
 	}
 
 	/**
@@ -83,6 +95,10 @@ class ContactosController extends Controller {
 		$cita->delete();
  
 		return Redirect::route('contactos.index')->with('message', 'Contacto eliminado!');
+	}
+	public function showCitasToAdd(){
+		$citas = Cita::all();
+		return view('contactos.showCitasToAdd', compact('citas'));
 	}
 
 }
