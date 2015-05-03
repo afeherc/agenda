@@ -10,7 +10,7 @@ class CitasTableSeeder extends Seeder {
         DB::table('citas')->delete();
  
         $citas = array(
-            ['id' => 1, 'nom' => 'Cita 1', 'slug' => 'cita-1', 'lloc'=>'BArna', 'fecha'=> '2015-04-29', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 1, 'nom' => 'Cita 1', 'slug' => 'cita-1', 'lloc'=>'Barna', 'fecha'=> '2015-04-29', 'created_at' => new DateTime, 'updated_at' => new DateTime],
             ['id' => 2, 'nom' => 'Cita 2', 'slug' => 'cita-2', 'lloc'=>'Badalona', 'fecha'=> '2015-07-29','created_at' => new DateTime, 'updated_at' => new DateTime],
             ['id' => 3, 'nom' => 'Cita 3', 'slug' => 'cita-3', 'lloc'=>'Santaco', 'fecha'=> '2015-08-29','created_at' => new DateTime, 'updated_at' => new DateTime],
         );
