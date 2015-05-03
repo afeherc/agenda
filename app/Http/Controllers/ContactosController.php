@@ -68,7 +68,7 @@ class ContactosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Contactos $contacto)
+	public function edit(Contacto $contacto)
 	{
 		return view('contactos.edit', compact('contacto'));
 	}

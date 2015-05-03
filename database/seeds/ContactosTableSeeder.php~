@@ -10,8 +10,8 @@ class ContactosTableSeeder extends Seeder {
         DB::table('contactos')->delete();
  
         $contactos = array(
-            ['id' => 1, 'nom' => 'Contacto 1', 'slug' => 'contact-1', 'mail'=>'BArna@gmail.com', 'telf'=> '20150429', 'created_at' => new DateTime, 'updated_at' => new DateTime],
-            ['id' => 2, 'nom' => 'Contacto 2', 'slug' => 'contact-2', 'mail'=>'Bada@lona.sin', 'telf'=> '20150729','created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 1, 'nom' => 'Contacto 1', 'slug' => 'contact-1', 'mail'=>'Barna@gmail.com', 'telf'=> '20150429', 'created_at' => new DateTime, 'updated_at' => new DateTime],
+            ['id' => 2, 'nom' => 'Contacto 2', 'slug' => 'contact-2', 'mail'=>'Bad@lona.sin', 'telf'=> '20150729','created_at' => new DateTime, 'updated_at' => new DateTime],
             ['id' => 3, 'nom' => 'Sin tacto 3', 'slug' => 'contact-3', 'mail'=>'Santaco@taco.es', 'telf'=> '20150829','created_at' => new DateTime, 'updated_at' => new DateTime],
         );
  

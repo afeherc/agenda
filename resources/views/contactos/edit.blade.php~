@@ -1,5 +1,5 @@
 @extends('app')
  
 @section('content')
-    <h2>Contactos.edit</h2>
+    <h2>Citas.edit</h2>
 @endsection

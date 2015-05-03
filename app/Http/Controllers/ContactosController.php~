@@ -96,5 +96,9 @@ class ContactosController extends Controller {
  
 		return Redirect::route('contactos.index')->with('message', 'Contacto eliminado!');
 	}
+	public function showCitasToAdd(){
+		$citas = Cita::all();
+		return view('contactos.showCitasToAdd', compact('citas'));
+	}
 
 }
