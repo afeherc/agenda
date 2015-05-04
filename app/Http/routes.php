@@ -10,28 +10,23 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-//Route::get('/', 'WelcomeController@index');
-
-//Route::get('home', 'HomeController@index');
-
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
-Route::model('citas','Cita');
-Route::model('contactos','Contactos');
+Route::model('citas', 'Cita');
+Route::model('contactos', 'Contacto');
 
-Route::get('/','AgendaController@index');
-Route::resource('agenda','AgendaController');
-Route::resource('citas','CitasController');
-Route::resource('contactos','ContactosController');
+Route::get('/', 'AgendaController@index');
+Route::resource('agenda', 'AgendaController');
+Route::resource('citas', 'CitasController');
+Route::resource('contactos', 'ContactosController');
 
-Route::bind('citas',function($value,$route){
-	return App\Cita::whereSlug($value)->first();
+Route::bind('citas', function($value, $route) {
+    return App\Cita::whereSlug($value)->first();
 });
-Route::bind('contactos',function($value,$route){
-	return App\Contacto::whereSlug($value)->first();
+Route::bind('contactos', function($value, $route) {
+    return App\Contacto::whereSlug($value)->first();
 });
 
